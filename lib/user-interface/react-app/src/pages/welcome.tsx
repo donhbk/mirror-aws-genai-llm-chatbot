@@ -21,7 +21,7 @@ export default function Welcome() {
           onFollow={onFollow}
           items={[
             {
-              text: "AWS GenAI Chatbot",
+              text: "Propelled by AWS  🚀",
               href: "/",
             },
           ]}
@@ -40,11 +40,11 @@ export default function Welcome() {
                   variant="primary"
                   href="/chatbot/playground"
                 >
-                  Getting Started
+                  ➡️ Click here to start chatting
                 </RouterButton>
               }
             >
-              Chatbot Home
+              PMU GenAI LLM Chatbot POC
             </Header>
           }
         >
