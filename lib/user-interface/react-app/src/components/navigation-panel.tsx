@@ -14,21 +14,13 @@ export default function NavigationPanel() {
     useNavigationPanelState();
   const [items] = useState<SideNavigationProps.Item[]>(() => {
     const items: SideNavigationProps.Item[] = [
-      {
-        type: "link",
-        text: "Home",
-        href: "/",
-      },
+    
       {
         type: "section",
         text: "Chatbot",
         items: [
           { type: "link", text: "Playground", href: "/chatbot/playground" },
-          {
-            type: "link",
-            text: "Models",
-            href: "/chatbot/models",
-          },
+        
         ],
       },
     ];
@@ -36,7 +28,7 @@ export default function NavigationPanel() {
     if (appContext?.config.rag_enabled) {
       items.push({
         type: "section",
-        text: "Retrieval-Augmented Generation (RAG)",
+        text: "Base documentaire PMU",
         items: [
           { type: "link", text: "Dashboard", href: "/rag" },
           {
@@ -45,17 +37,17 @@ export default function NavigationPanel() {
             href: "/rag/semantic-search",
           },
           { type: "link", text: "Workspaces", href: "/rag/workspaces" },
-          {
-            type: "link",
-            text: "Embeddings",
-            href: "/rag/embeddings",
-          },
-          {
-            type: "link",
-            text: "Cross-encoders",
-            href: "/rag/cross-encoders",
-          },
-          { type: "link", text: "Engines", href: "/rag/engines" },
+         // {
+         //   type: "link",
+         //   text: "Embeddings",
+         //   href: "/rag/embeddings",
+         // },
+         // {
+         //   type: "link",
+         //   text: "Cross-encoders",
+         //   href: "/rag/cross-encoders",
+         // },
+         // { type: "link", text: "Engines", href: "/rag/engines" },
         ],
       });
     }
@@ -67,7 +59,12 @@ export default function NavigationPanel() {
         text: "Documentation",
         href: "https://github.com/aws-samples/aws-genai-llm-chatbot",
         external: true,
-      }
+      },
+      {
+        type: "link",
+        text: "Resources",
+        href: "/",
+      },
     );
 
     return items;
@@ -91,7 +88,7 @@ export default function NavigationPanel() {
     <SideNavigation
       onFollow={onFollow}
       onChange={onChange}
-      header={{ href: "/", text: "AWS GenAI Chatbot" }}
+      header={{ href: "/", text: "PMU GenAI Chatbot" }}
       items={items.map((value, idx) => {
         if (value.type === "section") {
           const collapsed =
