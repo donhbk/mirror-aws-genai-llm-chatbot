@@ -19,7 +19,7 @@ export default function Chat(props: { sessionId?: string }) {
   const [configuration, setConfiguration] = useState<ChatBotConfiguration>(
     () => ({
       streaming: true,
-      showMetadata: false,
+      showMetadata: true,
       maxTokens: 512,
       temperature: 0.6,
       topP: 0.9,
@@ -77,7 +77,7 @@ export default function Chat(props: { sessionId?: string }) {
       </SpaceBetween>
       <div className={styles.welcome_text}>
         {messageHistory.length == 0 && !session?.loading && (
-          <center>AWS GenAI Chatbot</center>
+          <center>PMU GenAI Chatbot</center>
         )}
         {session?.loading && (
           <center>
