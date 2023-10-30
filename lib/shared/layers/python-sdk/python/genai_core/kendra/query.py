@@ -22,25 +22,7 @@ def query_workspace_kendra(
     kendra = get_kendra_client_for_index(kendra_index_id)
     limit = max(1, min(100, limit))
 
-    if kendra_index_external or kendra_use_all_data:
-        result = kendra.retrieve(
-            IndexId=kendra_index_id, QueryText=query, PageSize=limit, PageNumber=1
-        )
-    else:
-        result = kendra.retrieve(
-            IndexId=kendra_index_id,
-            QueryText=query,
-            PageSize=limit,
-            PageNumber=1,
-            AttributeFilter={
-                "EqualsTo": {
-                    "Key": "workspace_id",
-                    "Value": {
-                        "StringValue": workspace_id,
-                    },
-                }
-            },
-        )
+    result = kendra.retrieve(IndexId=kendra_index_id,QueryText=query,PageSize=limit,PageNumber=1,AttributeFilter={'AndAllFilters': [{"EqualsTo": {"Key": "_language_code","Value": {"StringValue": "fr"}}}]})
 
     items = result["ResultItems"]
     items = _convert_records("kendra", workspace_id, items)
